@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_training/src/main_state.dart';
 import 'package:state_training/src/main_view.dart';
-import 'package:state_training/src/main_app_state.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => MainAppState(),
+      create: (context) => MainState(),
       child: MaterialApp(
         title: 'Namer App',
         theme: ThemeData(
