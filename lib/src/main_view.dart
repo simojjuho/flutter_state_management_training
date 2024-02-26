@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_training/src/products/product_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -17,7 +18,7 @@ class _HomeViewState extends State<MainView> {
         page = const Placeholder();
         break;
       case 1:
-        page = const Placeholder();
+        page = const ProductView();
         break;
       default:
         throw UnimplementedError('No widget for selected index');
