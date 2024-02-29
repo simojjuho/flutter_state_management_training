@@ -16,7 +16,7 @@ class ProductView extends StatelessWidget {
           shrinkWrap: true,
           children: products
               .map((e) => ListTile(
-                    title: Text(e),
+                    title: Text(e.name),
                   ))
               .toList(),
         )
