@@ -33,6 +33,15 @@ class _ProductFormState extends State<ProductForm> {
     descriptionController.clear();
   }
 
+  void addNewProduct(ProductState productState) {
+    productState.addProduct(
+      nameController.text,
+      descriptionController.text,
+      int.parse(priceController.text),
+    );
+    clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     var productState = context.watch<ProductState>();
@@ -41,26 +50,33 @@ class _ProductFormState extends State<ProductForm> {
       key: _formKey,
       child: Column(
         children: [
-          TextFormField(
-            controller: nameController,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: nameController,
+            ),
           ),
-          TextFormField(
-            controller: priceController,
-            keyboardType: TextInputType.number,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: priceController,
+              keyboardType: TextInputType.number,
+            ),
           ),
-          TextFormField(
-            controller: descriptionController,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: descriptionController,
+            ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              productState.addProduct(
-                nameController.text,
-                descriptionController.text,
-                int.parse(priceController.text),
-              );
-              clear();
-            },
-            child: const Text("Send"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                addNewProduct(productState);
+              },
+              child: const Text("Send"),
+            ),
           )
         ],
       ),
