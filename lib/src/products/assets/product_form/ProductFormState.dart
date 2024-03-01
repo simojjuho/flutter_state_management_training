@@ -27,6 +27,12 @@ class _ProductFormState extends State<ProductForm> {
     super.dispose();
   }
 
+  void clear() {
+    nameController.clear();
+    priceController.clear();
+    descriptionController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     var productState = context.watch<ProductState>();
@@ -52,6 +58,7 @@ class _ProductFormState extends State<ProductForm> {
                 descriptionController.text,
                 int.parse(priceController.text),
               );
+              clear();
             },
             child: const Text("Send"),
           )
