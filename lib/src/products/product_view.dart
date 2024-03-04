@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_training/src/controllers/product_controller.dart';
 import 'package:state_training/src/product_state.dart';
 import 'package:state_training/src/products/assets/product_form/ProductFormState.dart';
 
@@ -17,7 +16,6 @@ class ProductView extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
-            print(snapshot.error);
             return const Text("Error!");
           } else {
             return Column(

@@ -7,16 +7,11 @@ class Product extends ProductCreateDto {
 
   Product({
     required this.id,
-    required String title,
-    required int price,
-    required String description,
-    required List<String> images,
+    required super.title,
+    required super.price,
+    required super.description,
+    required super.images,
     required this.creationAt,
     required this.updatedAt,
-  }) : super(
-          title: title,
-          price: price,
-          description: description,
-          images: images,
-        );
+  });
 }

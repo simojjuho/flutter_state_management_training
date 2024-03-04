@@ -21,7 +21,6 @@ class ProductController {
       }).toList();
       return products;
     } on DioException catch (_) {
-      print('Error block');
       return [];
     }
   }
