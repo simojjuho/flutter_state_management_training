@@ -15,6 +15,7 @@ class ProductController {
           .toList();
       return products;
     } on DioException catch (_) {
+      print(_.message);
       throw Exception("Could not fetch data from the server.");
     }
   }
@@ -31,10 +32,18 @@ class ProductController {
 
   Future<Product> addNewProduct(ProductCreateDto productDto) async {
     try {
-      var response = await dio.post(baseUrl, data: productDto);
+      var productObject = productDto.convertToJson();
+      print(productObject);
+      var response = await dio.post(
+        baseUrl,
+        data: productDto.convertToJson(),
+        options: Options(contentType: Headers.jsonContentType),
+      );
       final dynamic rawData = response.data;
       return Product.parseProduct(rawData);
-    } catch (e) {
+    } on DioException catch (e) {
+      print(e.message);
+      print(e.response.toString());
       throw Exception('Something happened');
     }
   }

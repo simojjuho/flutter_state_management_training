@@ -8,4 +8,12 @@ class Category {
     required this.name,
     required this.image,
   });
+
+  static Category parseCategory(categoryData) {
+    return Category(
+      id: categoryData['id'],
+      name: categoryData['name'],
+      image: categoryData['image'],
+    );
+  }
 }

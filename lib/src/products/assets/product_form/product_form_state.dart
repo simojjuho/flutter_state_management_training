@@ -47,12 +47,14 @@ class _ProductFormState extends State<ProductForm> {
       key: _formKey,
       child: Column(
         children: [
+          const Text('Product title:'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               controller: nameController,
             ),
           ),
+          const Text('Price:'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
@@ -60,6 +62,7 @@ class _ProductFormState extends State<ProductForm> {
               keyboardType: TextInputType.number,
             ),
           ),
+          const Text('Description'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(

@@ -14,9 +14,9 @@ class ProductState extends ChangeNotifier {
 
   //This is for FutureBuilder in product view, which needs a return value.
   //I will have to see, if setProducts() is needed at all, but it stays for now.
-  Future<List<Product>> getProducts() async {
+  Future<bool> getProducts() async {
     products = await controller.getProducts();
-    return products;
+    return true;
   }
 
   void addProduct(String title, String description, int price) async {
@@ -24,6 +24,7 @@ class ProductState extends ChangeNotifier {
         title: title,
         price: price,
         description: description,
+        categoryId: 1,
         images: ["http://images.com/first-pic"]);
     var product = await controller.addNewProduct(newProduct);
     products.add(product);
