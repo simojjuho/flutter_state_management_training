@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/product_state.dart';
-import 'package:state_training/src/products/assets/product_form/ProductFormState.dart';
+import 'package:state_training/src/products/assets/product_form/product_form_state.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key});
@@ -21,13 +22,15 @@ class ProductView extends StatelessWidget {
             return Column(
               children: [
                 const ProductForm(),
-                ListView(
-                  shrinkWrap: true,
-                  children: products
-                      .map((e) => ListTile(
-                            title: Text(e.title),
-                          ))
-                      .toList(),
+                Expanded(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: products
+                        .map((e) => ListTile(
+                              title: Text(e.title),
+                            ))
+                        .toList(),
+                  ),
                 )
               ],
             );

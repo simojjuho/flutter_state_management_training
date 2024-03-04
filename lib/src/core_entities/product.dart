@@ -14,4 +14,15 @@ class Product extends ProductCreateDto {
     required this.creationAt,
     required this.updatedAt,
   });
+
+  static Product parseProduct(productData) {
+    return Product(
+        id: productData['id'],
+        title: productData['title'],
+        price: productData['price'],
+        description: productData['description'],
+        images: List<String>.from(productData['images']),
+        creationAt: DateTime.parse(productData['creationAt']),
+        updatedAt: DateTime.parse(productData['updatedAt']));
+  }
 }
