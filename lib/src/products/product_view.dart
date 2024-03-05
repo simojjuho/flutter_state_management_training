@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/product_state.dart';
 import 'package:state_training/src/products/assets/product_form/product_form_state.dart';
+import 'package:state_training/src/products/assets/product_tile.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key});
@@ -22,12 +23,13 @@ class ProductView extends StatelessWidget {
               children: [
                 const ProductForm(),
                 Expanded(
-                  child: ListView(
+                  child: GridView.count(
                     shrinkWrap: true,
+                    crossAxisCount: 5,
                     children: products
-                        .map((e) => ListTile(
-                              title: Text(e.title),
-                            ))
+                        .map(
+                          (e) => ProductTile(product: e),
+                        )
                         .toList(),
                   ),
                 )
