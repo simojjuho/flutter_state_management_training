@@ -8,12 +8,9 @@ class ProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(product.title),
-      subtitle: Text('${product.price.toString()} €'),
-      tileColor: Colors.redAccent,
-      textColor: Colors.black87,
-      hoverColor: Colors.blueGrey,
+    return GridTile(
+      footer: Text(product.description),
+      child: Text(product.title),
     );
   }
 }
