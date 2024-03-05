@@ -22,7 +22,22 @@ class MainApp extends StatelessWidget {
         title: 'State training',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepOrange,
+            brightness: Brightness.dark,
+          ),
+          textTheme: const TextTheme(
+            displayLarge: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+            displaySmall: TextStyle(
+              fontSize: 15,
+            ),
+            displayMedium: TextStyle(
+              fontSize: 16,
+            ),
+          ),
         ),
         home: const MainView(),
       ),

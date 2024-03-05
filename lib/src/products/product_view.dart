@@ -15,7 +15,12 @@ class ProductView extends StatelessWidget {
         future: productState.getProducts(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+              ],
+            );
           } else if (snapshot.hasError) {
             return Text(snapshot.stackTrace.toString());
           } else {

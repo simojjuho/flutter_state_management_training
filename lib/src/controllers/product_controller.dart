@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:state_training/src/core_entities/product.dart';
 import 'package:state_training/src/core_entities/product_create_dto.dart';
+import 'package:state_training/src/core_entities/product_update_dto.dart';
 
 class ProductController {
   final dio = Dio();
@@ -14,9 +15,8 @@ class ProductController {
           .map((productData) => Product.parseProduct(productData))
           .toList();
       return products;
-    } on DioException catch (_) {
-      print(_.message);
-      throw Exception("Could not fetch data from the server.");
+    } on DioException catch (e) {
+      throw Exception("Something happened: ${e.message}");
     }
   }
 
@@ -32,8 +32,6 @@ class ProductController {
 
   Future<Product> addNewProduct(ProductCreateDto productDto) async {
     try {
-      var productObject = productDto.convertToJson();
-      print(productObject);
       var response = await dio.post(
         baseUrl,
         data: productDto.convertToJson(),
@@ -42,9 +40,21 @@ class ProductController {
       final dynamic rawData = response.data;
       return Product.parseProduct(rawData);
     } on DioException catch (e) {
-      print(e.message);
-      print(e.response.toString());
-      throw Exception('Something happened');
+      throw Exception('Something happened: ${e.message}');
+    }
+  }
+
+  Future<Product> updateProduct(ProductUpdateDto productNewVals, int id) async {
+    try {
+      var response = await dio.put(
+        '$baseUrl/$id',
+        data: productNewVals.convertToJson(),
+        options: Options(contentType: Headers.jsonContentType),
+      );
+      final dynamic rawData = response.data;
+      return Product.parseProduct(rawData);
+    } on DioException catch (e) {
+      throw Exception('Something happened: ${e.message}');
     }
   }
 }
