@@ -57,4 +57,13 @@ class ProductController {
       throw Exception('Something happened: ${e.message}');
     }
   }
+
+  Future<bool> deleteProduct(int productId) async {
+    try {
+      await dio.delete('$baseUrl/$productId');
+      return true;
+    } on DioException catch (_) {
+      throw Exception('Could not remove the product!');
+    }
+  }
 }

@@ -30,4 +30,10 @@ class ProductState extends ChangeNotifier {
     products.add(product);
     notifyListeners();
   }
+
+  void removeProduct(int id) async {
+    await controller.deleteProduct(id);
+    products = products.where((element) => element.id != id).toList();
+    notifyListeners();
+  }
 }
