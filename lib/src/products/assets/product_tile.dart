@@ -12,9 +12,21 @@ class ProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     var productState = context.watch<ProductState>();
     return GridTile(
-      footer: FloatingActionButton(
-        onPressed: () => productState.removeProduct(product.id),
-        child: const Icon(Icons.remove),
+      footer: Row(
+        children: [
+          FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(Icons.edit),
+          ),
+          FloatingActionButton(
+            onPressed: () => productState.removeProduct(product.id),
+            child: const Icon(Icons.remove),
+          ),
+          FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(Icons.shopping_cart),
+          )
+        ],
       ),
       child: Text('${product.title}: ${product.id}'),
     );
