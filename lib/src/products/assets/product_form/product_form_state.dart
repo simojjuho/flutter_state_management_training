@@ -34,32 +34,34 @@ class _ProductFormState extends State<ProductForm> {
     descriptionController.clear();
   }
 
-  void addNewProduct(ProductState productState) async {
-    try {
-      var newProduct = ProductCreateDto(
-          title: nameController.text,
-          price: int.parse(priceController.text),
-          description: descriptionController.text,
-          categoryId: 1,
-          images: ["http://images.com/first-pic"]);
-      var product = await controller.addNewProduct(newProduct);
-      productState.addProduct(product);
-      clear();
-    } on DioException catch (e) {
-      final snackBar = SnackBar(
-          content: Text(e.toString()),
-          action: SnackBarAction(
-              label: 'Undo',
-              onPressed: () {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              }));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     var productState = context.watch<ProductState>();
+    void setSnackbar(SnackBar snackBar) {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+
+    void addNewProduct(ProductState productState) async {
+      try {
+        var newProduct = ProductCreateDto(
+            title: nameController.text,
+            price: int.parse(priceController.text),
+            description: descriptionController.text,
+            categoryId: 1,
+            images: ["http://images.com/first-pic"]);
+        var product = await controller.addNewProduct(newProduct);
+        productState.addProduct(product);
+        clear();
+      } on DioException catch (e) {
+        final snackBar = SnackBar(
+          content: Text(e.toString()),
+          behavior: SnackBarBehavior.floating,
+          showCloseIcon: true,
+          backgroundColor: Theme.of(context).colorScheme.errorContainer,
+        );
+        setSnackbar(snackBar);
+      }
+    }
 
     return Form(
       key: _formKey,
