@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:state_training/src/controllers/product_controller.dart';
 import 'package:state_training/src/core_entities/product.dart';
@@ -19,14 +20,7 @@ class ProductState extends ChangeNotifier {
     return true;
   }
 
-  void addProduct(String title, String description, int price) async {
-    var newProduct = ProductCreateDto(
-        title: title,
-        price: price,
-        description: description,
-        categoryId: 1,
-        images: ["http://images.com/first-pic"]);
-    var product = await controller.addNewProduct(newProduct);
+  void addProduct(Product product) {
     products.add(product);
     notifyListeners();
   }

@@ -25,8 +25,8 @@ class ProductController {
       var response = await dio.get('$baseUrl/$id');
       final dynamic rawData = response.data;
       return Product.parseProduct(rawData);
-    } catch (e) {
-      throw Exception("Product with such an id ($id) does not exist!");
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -39,8 +39,8 @@ class ProductController {
       );
       final dynamic rawData = response.data;
       return Product.parseProduct(rawData);
-    } on DioException catch (e) {
-      throw Exception('Something happened: ${e.message}');
+    } on DioException {
+      rethrow;
     }
   }
 

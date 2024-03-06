@@ -54,7 +54,7 @@ class _HomeViewState extends State<MainView> {
                 color: Theme.of(context).colorScheme.primaryContainer,
                 child: page,
               ),
-            )
+            ),
           ],
         ),
       );

@@ -1,5 +1,8 @@
+import "package:dio/dio.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+import "package:state_training/src/controllers/product_controller.dart";
+import "package:state_training/src/core_entities/product_create_dto.dart";
 import "package:state_training/src/product_state.dart";
 
 class ProductForm extends StatefulWidget {
@@ -14,6 +17,7 @@ class _ProductFormState extends State<ProductForm> {
   final nameController = TextEditingController();
   final priceController = TextEditingController();
   final descriptionController = TextEditingController();
+  final controller = ProductController();
 
   @override
   void dispose() {
@@ -30,13 +34,27 @@ class _ProductFormState extends State<ProductForm> {
     descriptionController.clear();
   }
 
-  void addNewProduct(ProductState productState) {
-    productState.addProduct(
-      nameController.text,
-      descriptionController.text,
-      int.parse(priceController.text),
-    );
-    clear();
+  void addNewProduct(ProductState productState) async {
+    try {
+      var newProduct = ProductCreateDto(
+          title: nameController.text,
+          price: int.parse(priceController.text),
+          description: descriptionController.text,
+          categoryId: 1,
+          images: ["http://images.com/first-pic"]);
+      var product = await controller.addNewProduct(newProduct);
+      productState.addProduct(product);
+      clear();
+    } on DioException catch (e) {
+      final snackBar = SnackBar(
+          content: Text(e.toString()),
+          action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              }));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   @override
