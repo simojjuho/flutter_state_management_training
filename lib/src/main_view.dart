@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:state_training/src/products/product_view.dart';
 
-class MainView extends StatefulWidget {
-  const MainView({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<MainView> createState() => _HomeViewState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<MainView> {
+class _HomeViewState extends State<HomeView> {
   var selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
