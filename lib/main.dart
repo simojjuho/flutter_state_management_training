@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/main_loading_screen.dart';
+import 'package:state_training/src/states/main_view_state.dart';
 import 'package:state_training/src/states/product_state.dart';
 import 'package:state_training/src/states/user_state.dart';
 
@@ -16,7 +17,8 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ProductState>(create: (_) => ProductState()),
-        ChangeNotifierProvider<UserState>(create: (_) => UserState())
+        ChangeNotifierProvider<UserState>(create: (_) => UserState()),
+        ChangeNotifierProvider<MainViewState>(create: (_) => MainViewState())
       ],
       child: MaterialApp(
         title: 'State training',

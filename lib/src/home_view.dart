@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:state_training/src/products/product_view.dart';
+import 'package:state_training/src/states/main_view_state.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  var selectedIndex = 0;
-  @override
   Widget build(BuildContext context) {
+    final mainViewState = context.watch<MainViewState>();
+    final selectedIndex = mainViewState.selectedIndex;
     Widget page;
     switch (selectedIndex) {
       case 0:
@@ -42,9 +40,7 @@ class _HomeViewState extends State<HomeView> {
               ],
               selectedIndex: selectedIndex,
               onDestinationSelected: (value) {
-                setState(() {
-                  selectedIndex = value;
-                });
+                mainViewState.setIndex(value);
               },
             ),
           ),
