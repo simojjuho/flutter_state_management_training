@@ -1,9 +1,8 @@
 import "package:dio/dio.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
-import "package:state_training/src/controllers/product_controller.dart";
-import "package:state_training/src/core_entities/product_create_dto.dart";
-import "package:state_training/src/product_state.dart";
+import "package:state_training/src/states/product_state.dart";
+import "package:state_training/src/services/product_service.dart";
 
 class ProductForm extends StatefulWidget {
   const ProductForm({super.key});
@@ -17,7 +16,7 @@ class _ProductFormState extends State<ProductForm> {
   final nameController = TextEditingController();
   final priceController = TextEditingController();
   final descriptionController = TextEditingController();
-  final controller = ProductController();
+  final service = ProductService();
 
   @override
   void dispose() {
@@ -43,13 +42,11 @@ class _ProductFormState extends State<ProductForm> {
 
     void addNewProduct(ProductState productState) async {
       try {
-        var newProduct = ProductCreateDto(
-            title: nameController.text,
-            price: int.parse(priceController.text),
-            description: descriptionController.text,
-            categoryId: 1,
-            images: ["http://images.com/first-pic"]);
-        var product = await controller.addNewProduct(newProduct);
+        var product = await service.addNewProduct(
+          nameController.text,
+          int.parse(priceController.text),
+          descriptionController.text,
+        );
         productState.addProduct(product);
         clear();
       } on DioException catch (e) {

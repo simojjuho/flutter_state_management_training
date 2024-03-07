@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_training/src/product_state.dart';
-import 'package:state_training/src/main_view.dart';
-import 'package:state_training/src/user_state.dart';
+import 'package:state_training/src/main_loading_screen.dart';
+import 'package:state_training/src/states/product_state.dart';
+import 'package:state_training/src/states/user_state.dart';
 
 void main() {
   runApp(const MainApp());
@@ -39,7 +39,7 @@ class MainApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const HomeView(),
+        home: MainLoadingScreen(),
       ),
     );
   }
