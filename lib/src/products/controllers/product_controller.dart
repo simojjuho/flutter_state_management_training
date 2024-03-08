@@ -2,14 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:state_training/src/products/domain/core_entities/product.dart';
 import 'package:state_training/src/products/domain/DTOs/product_create_dto.dart';
 import 'package:state_training/src/products/domain/DTOs/product_update_dto.dart';
+import 'package:state_training/src/utils/http.dart';
 
 class ProductController {
-  final dio = Dio();
-  final baseUrl = "https://api.escuelajs.co/api/v1/products";
-
+  final urlExtension = '/products';
   Future<List<Product>> getProducts() async {
     try {
-      var response = await dio.get(baseUrl);
+      var response = await dio.get(urlExtension);
       final List<dynamic> rawData = response.data;
       final List<Product> products = rawData
           .map((productData) => Product.parseProduct(productData))
@@ -22,7 +21,7 @@ class ProductController {
 
   Future<Product> getProduct(String id) async {
     try {
-      var response = await dio.get('$baseUrl/$id');
+      var response = await dio.get('$urlExtension/$id');
       final dynamic rawData = response.data;
       return Product.parseProduct(rawData);
     } on DioException {
@@ -33,7 +32,7 @@ class ProductController {
   Future<Product> addNewProduct(ProductCreateDto productDto) async {
     try {
       var response = await dio.post(
-        baseUrl,
+        urlExtension,
         data: productDto.convertToJson(),
         options: Options(contentType: Headers.jsonContentType),
       );
@@ -47,23 +46,23 @@ class ProductController {
   Future<Product> updateProduct(ProductUpdateDto productNewVals, int id) async {
     try {
       var response = await dio.put(
-        '$baseUrl/$id',
+        '$urlExtension/$id',
         data: productNewVals.convertToJson(),
         options: Options(contentType: Headers.jsonContentType),
       );
       final dynamic rawData = response.data;
       return Product.parseProduct(rawData);
-    } on DioException catch (e) {
-      throw Exception('Something happened: ${e.message}');
+    } on DioException {
+      rethrow;
     }
   }
 
   Future<bool> deleteProduct(int productId) async {
     try {
-      await dio.delete('$baseUrl/$productId');
+      await dio.delete('$urlExtension/$productId');
       return true;
-    } on DioException catch (_) {
-      throw Exception('Could not remove the product!');
+    } on DioException {
+      rethrow;
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_training/src/products/state/category_state.dart';
 import 'package:state_training/src/products/state/product_state.dart';
 import 'package:state_training/src/products/presentation/widgets/product_form/product_form.dart';
 import 'package:state_training/src/products/presentation/widgets/product_tile.dart';
@@ -11,6 +12,8 @@ class ProductView extends StatelessWidget {
   Widget build(BuildContext context) {
     var productState = context.watch<ProductState>();
     var products = productState.products;
+    var categoryState = context.watch<CategoryState>();
+    var vategories = categoryState.categories;
 
     return Column(
       children: [
