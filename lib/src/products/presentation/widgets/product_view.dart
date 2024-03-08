@@ -13,11 +13,18 @@ class ProductView extends StatelessWidget {
     var productState = context.watch<ProductState>();
     var products = productState.products;
     var categoryState = context.watch<CategoryState>();
-    var vategories = categoryState.categories;
+    var categories = categoryState.categories;
 
     return Column(
       children: [
         const ProductForm(),
+        Flex(
+            direction: Axis.horizontal,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: categories
+                .map((e) =>
+                    FloatingActionButton(onPressed: () {}, child: Text(e.name)))
+                .toList()),
         Expanded(
           child: GridView.count(
             shrinkWrap: true,

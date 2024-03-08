@@ -16,6 +16,7 @@ class _ProductFormState extends State<ProductForm> {
   final nameController = TextEditingController();
   final priceController = TextEditingController();
   final descriptionController = TextEditingController();
+  final categoryController = TextEditingController();
   final service = ProductService();
 
   @override
@@ -24,6 +25,7 @@ class _ProductFormState extends State<ProductForm> {
     nameController.dispose();
     priceController.dispose();
     descriptionController.dispose();
+    categoryController.dispose();
     super.dispose();
   }
 
@@ -31,6 +33,7 @@ class _ProductFormState extends State<ProductForm> {
     nameController.clear();
     priceController.clear();
     descriptionController.clear();
+    categoryController.clear();
   }
 
   @override
@@ -51,7 +54,7 @@ class _ProductFormState extends State<ProductForm> {
         clear();
       } on DioException catch (e) {
         final snackBar = SnackBar(
-          content: Text(e.toString()),
+          content: Text(e.response.toString()),
           behavior: SnackBarBehavior.floating,
           showCloseIcon: true,
           backgroundColor: Theme.of(context).colorScheme.errorContainer,
