@@ -1,8 +1,8 @@
 import "package:dio/dio.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
-import "package:state_training/src/states/product_state.dart";
-import "package:state_training/src/services/product_service.dart";
+import "package:state_training/src/products/state/product_state.dart";
+import "package:state_training/src/products/services/product_service.dart";
 
 class ProductForm extends StatefulWidget {
   const ProductForm({super.key});

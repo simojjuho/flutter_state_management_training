@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:state_training/src/controllers/product_controller.dart';
-import 'package:state_training/src/core_entities/product.dart';
-import 'package:state_training/src/core_entities/product_create_dto.dart';
+import 'package:state_training/src/products/controllers/product_controller.dart';
+import 'package:state_training/src/products/domain/core_entities/product.dart';
+import 'package:state_training/src/products/domain/DTOs/product_create_dto.dart';
 
 class ProductService {
   final controller = ProductController();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_training/src/states/product_state.dart';
-import 'package:state_training/src/products/assets/product_form/product_form.dart';
-import 'package:state_training/src/products/assets/product_tile.dart';
+import 'package:state_training/src/products/state/product_state.dart';
+import 'package:state_training/src/products/presentation/widgets/product_form/product_form.dart';
+import 'package:state_training/src/products/presentation/widgets/product_tile.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key});

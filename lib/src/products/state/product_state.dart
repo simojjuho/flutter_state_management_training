@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:state_training/src/core_entities/product.dart';
-import 'package:state_training/src/services/product_service.dart';
+import 'package:state_training/src/products/domain/core_entities/product.dart';
+import 'package:state_training/src/products/services/product_service.dart';
 
 class ProductState with ChangeNotifier {
   ProductState() {

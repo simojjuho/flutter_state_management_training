@@ -1,4 +1,4 @@
-import 'package:state_training/src/enums/roles.dart';
+import 'package:state_training/src/users/state/domain/enums/roles.dart';
 
 class User {
   final int id;

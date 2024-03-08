@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:state_training/src/core_entities/product.dart';
-import 'package:state_training/src/core_entities/product_create_dto.dart';
-import 'package:state_training/src/core_entities/product_update_dto.dart';
+import 'package:state_training/src/products/domain/core_entities/product.dart';
+import 'package:state_training/src/products/domain/DTOs/product_create_dto.dart';
+import 'package:state_training/src/products/domain/DTOs/product_update_dto.dart';
 
 class ProductController {
   final dio = Dio();

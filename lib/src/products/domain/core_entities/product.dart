@@ -1,4 +1,4 @@
-import 'package:state_training/src/core_entities/category.dart';
+import 'package:state_training/src/products/domain/core_entities/category.dart';
 
 class Product {
   final int id;
