@@ -31,7 +31,7 @@ class _ProductViewState extends State<ProductView> {
         const ProductForm(),
         Flex(
             direction: Axis.horizontal,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: categoryNames
                 .map((e) => FloatingActionButton(
                     onPressed: () {
@@ -44,7 +44,7 @@ class _ProductViewState extends State<ProductView> {
         Expanded(
           child: GridView.count(
             shrinkWrap: true,
-            crossAxisCount: 5,
+            crossAxisCount: 3,
             children: visibleProducts
                 .map(
                   (e) => ProductTile(product: e),

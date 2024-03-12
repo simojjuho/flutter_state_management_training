@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/products/presentation/widgets/product_view.dart';
+import 'package:state_training/src/shared/presentation/widgets/home_view_medium.dart';
+import 'package:state_training/src/shared/presentation/widgets/home_view_small.dart';
 import 'package:state_training/src/shared/states/main_view_state.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,33 +29,11 @@ class HomeView extends StatelessWidget {
       context,
       constraints,
     ) {
-      return Row(
-        children: [
-          SafeArea(
-            child: NavigationRail(
-              extended: false,
-              destinations: const [
-                NavigationRailDestination(
-                  icon: Icon(Icons.home),
-                  label: Text('Home'),
-                ),
-                NavigationRailDestination(
-                    icon: Icon(Icons.favorite), label: Text('Faorites'))
-              ],
-              selectedIndex: selectedIndex,
-              onDestinationSelected: (value) {
-                mainViewState.setIndex(value);
-              },
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: page,
-            ),
-          ),
-        ],
-      );
+      if (constraints.maxWidth < 600) {
+        return HomeViewSmall(page: page);
+      } else {
+        return HomeViewMedium(page: page);
+      }
     });
   }
 }
