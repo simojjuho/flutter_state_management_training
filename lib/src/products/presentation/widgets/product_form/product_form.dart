@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "package:state_training/src/products/presentation/state/category_state.dart";
 import "package:state_training/src/products/presentation/state/product_state.dart";
+import "package:state_training/src/products/presentation/widgets/product_form/text_field_with_padding.dart";
 import "package:state_training/src/products/services/product_service.dart";
 
 class ProductForm extends StatefulWidget {
@@ -72,26 +73,19 @@ class _ProductFormState extends State<ProductForm> {
       child: Column(
         children: [
           const Text('Product title:'),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: nameController,
-            ),
+          TextFieldWithPadding(
+            controller: nameController,
+            inputType: TextInputType.text,
           ),
           const Text('Price:'),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: priceController,
-              keyboardType: TextInputType.number,
-            ),
+          TextFieldWithPadding(
+            controller: priceController,
+            inputType: TextInputType.number,
           ),
           const Text('Description'),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: descriptionController,
-            ),
+          TextFieldWithPadding(
+            controller: descriptionController,
+            inputType: TextInputType.text,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
