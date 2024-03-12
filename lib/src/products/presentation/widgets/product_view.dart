@@ -45,6 +45,7 @@ class _ProductViewState extends State<ProductView> {
           child: GridView.count(
             shrinkWrap: true,
             crossAxisCount: 3,
+            childAspectRatio: 2.5,
             children: visibleProducts
                 .map(
                   (e) => ProductTile(product: e),

@@ -10,6 +10,7 @@ class CategoryState with ChangeNotifier {
   final service = CategoryService();
   var categories = <Category>[];
   var categoryNames = <String>[];
+  var selectedCategory = "";
 
   void setCategories() async {
     categories = await service.getAll();
@@ -20,5 +21,11 @@ class CategoryState with ChangeNotifier {
   void setCategoryNames() {
     categoryNames = categories.map((e) => e.name).toList();
     categoryNames.add('Show all');
+    setSelectedCategory(categoryNames[0]);
+  }
+
+  void setSelectedCategory(String value) {
+    selectedCategory = value;
+    notifyListeners();
   }
 }

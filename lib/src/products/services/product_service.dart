@@ -15,13 +15,14 @@ class ProductService {
     String title,
     int price,
     String description,
+    int categoryId,
   ) async {
     try {
       var productCreateDto = ProductCreateDto(
           title: title,
           price: price,
           description: description,
-          categoryId: 1,
+          categoryId: categoryId,
           images: ["http://images.com/first-pic"]);
       var newProduct = await controller.addNewProduct(productCreateDto);
       return newProduct;

@@ -58,11 +58,7 @@ class ProductController {
   }
 
   Future<bool> deleteProduct(int productId) async {
-    try {
-      await dio.delete('$urlExtension/$productId');
-      return true;
-    } on DioException {
-      rethrow;
-    }
+    await dio.delete('$urlExtension/$productId');
+    return true;
   }
 }
