@@ -4,13 +4,21 @@ import 'package:state_training/src/products/services/category_service.dart';
 
 class CategoryState with ChangeNotifier {
   CategoryState() {
-    setProducts();
+    setCategories();
   }
 
   final service = CategoryService();
   var categories = <Category>[];
+  var categoryNames = <String>[];
 
-  void setProducts() async {
+  void setCategories() async {
     categories = await service.getAll();
+    setCategoryNames();
+    notifyListeners();
+  }
+
+  void setCategoryNames() {
+    categoryNames = categories.map((e) => e.name).toList();
+    categoryNames.add('Show all');
   }
 }

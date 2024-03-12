@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_training/src/products/state/category_state.dart';
+import 'package:state_training/src/products/presentation/state/category_state.dart';
 import 'package:state_training/src/shared/presentation/widgets/main_loading_screen.dart';
 import 'package:state_training/src/shared/states/main_view_state.dart';
-import 'package:state_training/src/products/state/product_state.dart';
+import 'package:state_training/src/products/presentation/state/product_state.dart';
 import 'package:state_training/src/users/state/user_state.dart';
 
 void main() {
@@ -43,7 +43,7 @@ class MainApp extends StatelessWidget {
             ),
           ),
         ),
-        home: MainLoadingScreen(),
+        home: const MainLoadingScreen(),
       ),
     );
   }
