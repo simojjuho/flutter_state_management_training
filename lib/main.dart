@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
         ChangeNotifierProvider<ProductState>(create: (_) => ProductState()),
         ChangeNotifierProvider<UserState>(create: (_) => UserState()),
         ChangeNotifierProvider<CategoryState>(create: (_) => CategoryState()),
-        ChangeNotifierProvider<MainViewState>(create: (_) => MainViewState())
+        ChangeNotifierProvider<MainViewState>(create: (_) => MainViewState()),
       ],
       child: MaterialApp(
         title: 'State training',
@@ -31,6 +31,9 @@ class MainApp extends StatelessWidget {
             brightness: Brightness.dark,
           ),
           textTheme: const TextTheme(
+            headlineLarge: TextStyle(
+              fontSize: 60,
+            ),
             displayLarge: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,

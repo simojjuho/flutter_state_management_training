@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/products/presentation/widgets/product_view.dart';
-import 'package:state_training/src/shared/presentation/widgets/home/main_view_medium.dart';
-import 'package:state_training/src/shared/presentation/widgets/home/main_view_small.dart';
+import 'package:state_training/src/shared/presentation/widgets/home_view/home_view.dart';
+import 'package:state_training/src/shared/presentation/widgets/main_view/main_view_medium.dart';
+import 'package:state_training/src/shared/presentation/widgets/main_view/main_view_small.dart';
 import 'package:state_training/src/shared/states/main_view_state.dart';
 
 class MainView extends StatelessWidget {
@@ -17,7 +18,7 @@ class MainView extends StatelessWidget {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = const Placeholder();
+        page = const HomeView();
         break;
       case 1:
         page = const ProductView();
