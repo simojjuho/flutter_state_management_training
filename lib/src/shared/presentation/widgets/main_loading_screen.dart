@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_training/src/shared/presentation/widgets/home/home_view.dart';
+import 'package:state_training/src/shared/presentation/widgets/home/main_view.dart';
 import 'package:state_training/src/products/presentation/state/product_state.dart';
 
 class MainLoadingScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class MainLoadingScreen extends StatelessWidget {
             } else if (snapshot.hasError) {
               return Text(snapshot.stackTrace.toString());
             } else {
-              return const HomeView();
+              return const MainView();
             }
           }),
     );

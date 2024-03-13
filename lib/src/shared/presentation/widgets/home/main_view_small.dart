@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/shared/states/main_view_state.dart';
 
-class HomeViewSmall extends StatelessWidget {
-  const HomeViewSmall({
+class MainViewSmall extends StatelessWidget {
+  const MainViewSmall({
     required this.page,
     super.key,
   });

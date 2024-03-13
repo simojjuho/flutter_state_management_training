@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/shared/states/main_view_state.dart';
 
-class HomeViewMedium extends StatelessWidget {
-  const HomeViewMedium({
+class MainViewMedium extends StatelessWidget {
+  const MainViewMedium({
     required this.page,
     super.key,
   });

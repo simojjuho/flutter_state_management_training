@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/products/presentation/widgets/product_view.dart';
-import 'package:state_training/src/shared/presentation/widgets/home/home_view_medium.dart';
-import 'package:state_training/src/shared/presentation/widgets/home/home_view_small.dart';
+import 'package:state_training/src/shared/presentation/widgets/home/main_view_medium.dart';
+import 'package:state_training/src/shared/presentation/widgets/home/main_view_small.dart';
 import 'package:state_training/src/shared/states/main_view_state.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({
+class MainView extends StatelessWidget {
+  const MainView({
     super.key,
   });
 
@@ -30,9 +30,9 @@ class HomeView extends StatelessWidget {
       constraints,
     ) {
       if (constraints.maxWidth < 600) {
-        return HomeViewSmall(page: page);
+        return MainViewSmall(page: page);
       } else {
-        return HomeViewMedium(page: page);
+        return MainViewMedium(page: page);
       }
     });
   }
