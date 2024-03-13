@@ -14,8 +14,6 @@ So far, the project tree is as follows (only  the parts that I've done by myself
 
 ```
 ├── lib
-│   ├── lib
-│   │   └── src
 │   ├── main.dart
 │   └── src
 │       ├── authentication
@@ -34,17 +32,24 @@ So far, the project tree is as follows (only  the parts that I've done by myself
 │       │   │       ├── product_create_dto.dart
 │       │   │       └── product_update_dto.dart
 │       │   ├── presentation
+│       │   │   ├── state
+│       │   │   │   ├── category_state.dart
+│       │   │   │   └── product_state.dart
 │       │   │   └── widgets
 │       │   │       ├── product_form
-│       │   │       │   └── product_form.dart
+│       │   │       │   ├── add_product_form.dart
+│       │   │       │   └── text_field_with_padding.dart
+│       │   │       ├── product_list
+│       │   │       │   ├── product_list_medium.dart
+│       │   │       │   └── product_list_small.dart
 │       │   │       ├── product_tile.dart
-│       │   │       └── product_view.dart
-│       │   ├── services
-│       │   │   ├── category_service.dart
-│       │   │   └── product_service.dart
-│       │   └── state
-│       │       ├── category_state.dart
-│       │       └── product_state.dart
+│       │   │       ├── product_view.dart
+│       │   │       └── visible_category_options
+│       │   │           ├── choose_category_medium.dart
+│       │   │           └── choose_category_small.dart
+│       │   └── services
+│       │       ├── category_service.dart
+│       │       └── product_service.dart
 │       ├── shared
 │       │   ├── controllers
 │       │   ├── presentation
@@ -52,6 +57,8 @@ So far, the project tree is as follows (only  the parts that I've done by myself
 │       │   │       ├── home
 │       │   │       │   └── home_view.dart
 │       │   │       ├── home_view.dart
+│       │   │       ├── home_view_medium.dart
+│       │   │       ├── home_view_small.dart
 │       │   │       ├── info
 │       │   │       └── main_loading_screen.dart
 │       │   ├── services
