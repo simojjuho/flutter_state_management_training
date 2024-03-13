@@ -29,22 +29,28 @@ class _ProductViewState extends State<ProductView> {
     return Column(
       children: [
         const ProductForm(),
-        Flex(
-            direction: Axis.horizontal,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: categoryNames
-                .map((e) => FloatingActionButton(
-                    onPressed: () {
-                      setState(() {
-                        chosenCategory = e;
-                      });
-                    },
-                    child: Text(e)))
-                .toList()),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: categoryNames
+                  .map((e) => FloatingActionButton(
+                      onPressed: () {
+                        setState(() {
+                          chosenCategory = e;
+                        });
+                      },
+                      child: Text(e)))
+                  .toList()),
+        ),
         Expanded(
           child: GridView.count(
+            padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
             shrinkWrap: true,
             crossAxisCount: 3,
+            mainAxisSpacing: 5.0,
+            crossAxisSpacing: 5.0,
             childAspectRatio: 2.5,
             children: visibleProducts
                 .map(
