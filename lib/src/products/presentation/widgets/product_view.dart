@@ -37,7 +37,10 @@ class _ProductViewState extends State<ProductView> {
         return Column(
           children: [
             const AddProductForm(),
-            ChooseCategorySmall(setCategory: setCategory),
+            ChooseCategorySmall(
+              setCategory: setCategory,
+              chosenCategory: chosenCategory,
+            ),
             ProductListSmall(visibleProducts: visibleProducts)
           ],
         );
