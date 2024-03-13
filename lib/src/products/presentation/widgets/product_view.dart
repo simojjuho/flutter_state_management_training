@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:state_training/src/products/presentation/state/category_state.dart';
 import 'package:state_training/src/products/presentation/state/product_state.dart';
 import 'package:state_training/src/products/presentation/widgets/product_form/add_product_form.dart';
-import 'package:state_training/src/products/presentation/widgets/product_tile.dart';
+import 'package:state_training/src/products/presentation/widgets/product_list/product_list_medium.dart';
+import 'package:state_training/src/products/presentation/widgets/product_list/product_list_small.dart';
 
 class ProductView extends StatefulWidget {
   const ProductView({super.key});
@@ -26,40 +27,52 @@ class _ProductViewState extends State<ProductView> {
           : product.category.name == chosenCategory;
     });
 
-    return Column(
-      children: [
-        const AddProductForm(),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Flex(
-              direction: Axis.horizontal,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: categoryNames
-                  .map((e) => FloatingActionButton(
-                      onPressed: () {
-                        setState(() {
-                          chosenCategory = e;
-                        });
-                      },
-                      child: Text(e)))
-                  .toList()),
-        ),
-        Expanded(
-          child: GridView.count(
-            padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            mainAxisSpacing: 5.0,
-            crossAxisSpacing: 5.0,
-            childAspectRatio: 2.5,
-            children: visibleProducts
-                .map(
-                  (e) => ProductTile(product: e),
-                )
-                .toList(),
-          ),
-        )
-      ],
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < 600) {
+        return Column(
+          children: [
+            const AddProductForm(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: categoryNames
+                      .map((e) => FloatingActionButton(
+                          onPressed: () {
+                            setState(() {
+                              chosenCategory = e;
+                            });
+                          },
+                          child: Text(e)))
+                      .toList()),
+            ),
+            ProductListSmall(visibleProducts: visibleProducts)
+          ],
+        );
+      } else {
+        return Column(
+          children: [
+            const AddProductForm(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: categoryNames
+                      .map((e) => FloatingActionButton(
+                          onPressed: () {
+                            setState(() {
+                              chosenCategory = e;
+                            });
+                          },
+                          child: Text(e)))
+                      .toList()),
+            ),
+            ProductListMedium(visibleProducts: visibleProducts)
+          ],
+        );
+      }
+    });
   }
 }
