@@ -4,7 +4,7 @@ import 'package:state_training/src/products/presentation/state/category_state.da
 import 'package:state_training/src/shared/presentation/widgets/main_loading_screen.dart';
 import 'package:state_training/src/shared/states/main_view_state.dart';
 import 'package:state_training/src/products/presentation/state/product_state.dart';
-import 'package:state_training/src/users/state/user_state.dart';
+import 'package:state_training/src/users/presentation/state/user_state.dart';
 
 void main() {
   runApp(const MainApp());
