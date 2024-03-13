@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_training/src/shared/presentation/widgets/home_view.dart';
+import 'package:state_training/src/shared/presentation/widgets/home/home_view.dart';
 import 'package:state_training/src/products/presentation/state/product_state.dart';
 
 class MainLoadingScreen extends StatelessWidget {
