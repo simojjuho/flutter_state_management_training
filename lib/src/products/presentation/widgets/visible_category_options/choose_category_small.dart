@@ -21,10 +21,10 @@ class ChooseCategorySmall extends StatelessWidget {
           onChanged: (String? value) {
             setCategory(value!);
           },
-          items: categoryNames.map<DropdownMenuItem<String>>((e) {
+          items: categoryNames.map<DropdownMenuItem<String>>((categoryName) {
             return DropdownMenuItem(
-              value: e,
-              child: Text(e),
+              value: categoryName,
+              child: Text(categoryName),
             );
           }).toList(),
         ));

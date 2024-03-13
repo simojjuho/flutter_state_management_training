@@ -18,11 +18,11 @@ class ChooseCategoryMedium extends StatelessWidget {
           direction: Axis.horizontal,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: categoryNames
-              .map((e) => FloatingActionButton(
+              .map((categoryName) => FloatingActionButton(
                   onPressed: () {
-                    setCategory(e);
+                    setCategory(categoryName);
                   },
-                  child: Text(e)))
+                  child: Text(categoryName)))
               .toList()),
     );
   }

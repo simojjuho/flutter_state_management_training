@@ -91,10 +91,10 @@ class _AddProductFormState extends State<AddProductForm> {
             padding: const EdgeInsets.all(8.0),
             child: DropdownButton<String>(
               value: categoryState.selectedCategory,
-              items: categories.map<DropdownMenuItem<String>>((e) {
+              items: categories.map<DropdownMenuItem<String>>((category) {
                 return DropdownMenuItem<String>(
-                  value: e.name,
-                  child: Text(e.name),
+                  value: category.name,
+                  child: Text(category.name),
                 );
               }).toList(),
               onChanged: (value) {
