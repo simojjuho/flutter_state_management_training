@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:state_training/src/products/domain/core_entities/product.dart';
+
+import '../../domain/core_entities/user.dart';
 
 class UserState extends ChangeNotifier {
-  var users = <Product>[];
+  User? loggedUser;
 
-  void addUser(Product value) {
-    users.add(value);
+  logInUser(User user) {
+    loggedUser = user;
+    notifyListeners();
+  }
+
+  logOutUser() {
+    loggedUser = null;
+    notifyListeners();
   }
 }
