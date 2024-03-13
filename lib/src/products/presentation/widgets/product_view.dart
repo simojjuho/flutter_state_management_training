@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_training/src/products/presentation/state/category_state.dart';
 import 'package:state_training/src/products/presentation/state/product_state.dart';
-import 'package:state_training/src/products/presentation/widgets/product_form/product_form.dart';
+import 'package:state_training/src/products/presentation/widgets/product_form/add_product_form.dart';
 import 'package:state_training/src/products/presentation/widgets/product_tile.dart';
 
 class ProductView extends StatefulWidget {
@@ -28,7 +28,7 @@ class _ProductViewState extends State<ProductView> {
 
     return Column(
       children: [
-        const ProductForm(),
+        const AddProductForm(),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Flex(

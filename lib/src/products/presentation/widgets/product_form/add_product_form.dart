@@ -6,14 +6,14 @@ import "package:state_training/src/products/presentation/state/product_state.dar
 import "package:state_training/src/products/presentation/widgets/product_form/text_field_with_padding.dart";
 import "package:state_training/src/products/services/product_service.dart";
 
-class ProductForm extends StatefulWidget {
-  const ProductForm({super.key});
+class AddProductForm extends StatefulWidget {
+  const AddProductForm({super.key});
 
   @override
-  State<ProductForm> createState() => _ProductFormState();
+  State<AddProductForm> createState() => _AddProductFormState();
 }
 
-class _ProductFormState extends State<ProductForm> {
+class _AddProductFormState extends State<AddProductForm> {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final priceController = TextEditingController();
