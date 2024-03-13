@@ -16,4 +16,14 @@ class User {
     required this.password,
     required this.avatar,
   });
+
+  static User parseUser(userData) {
+    return User(
+        id: userData['id'],
+        email: userData['email'],
+        name: userData['name'],
+        role: userData['role'],
+        password: userData['password'],
+        avatar: userData['avatar']);
+  }
 }
