@@ -5,6 +5,7 @@ import "package:state_training/src/products/presentation/state/category_state.da
 import "package:state_training/src/products/presentation/state/product_state.dart";
 import "package:state_training/src/products/presentation/widgets/product_form/text_field_with_padding.dart";
 import "package:state_training/src/products/services/product_service.dart";
+import "package:state_training/src/shared/presentation/widgets/messages/error_snackbar.dart";
 
 class AddProductForm extends StatefulWidget {
   const AddProductForm({super.key});
@@ -41,9 +42,6 @@ class _AddProductFormState extends State<AddProductForm> {
     var categoryState = context.watch<CategoryState>();
     var categories = categoryState.categories;
     var category = categoryState.selectedCategory;
-    void setSnackbar(SnackBar snackBar) {
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
 
     void addNewProduct(ProductState productState) async {
       try {
@@ -58,13 +56,7 @@ class _AddProductFormState extends State<AddProductForm> {
         productState.addProduct(product);
         clear();
       } on DioException catch (e) {
-        final snackBar = SnackBar(
-          content: Text(e.response.toString()),
-          behavior: SnackBarBehavior.floating,
-          showCloseIcon: true,
-          backgroundColor: Theme.of(context).colorScheme.errorContainer,
-        );
-        setSnackbar(snackBar);
+        ErrorSnackbar.set(e.message!, context);
       }
     }
 
