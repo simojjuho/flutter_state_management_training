@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_training/src/shared/presentation/widgets/home_view/log_in_dialog.dart';
 
 class NotLoggedIn extends StatelessWidget {
   const NotLoggedIn({super.key});
@@ -14,20 +15,11 @@ class NotLoggedIn extends StatelessWidget {
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        const Text('You do not seem to be logged in.'),
-        Flex(
-          direction: Axis.horizontal,
-          children: [
-            FloatingActionButton.large(
-              onPressed: () {},
-              child: const Text('Log in'),
-            ),
-            FloatingActionButton.large(
-              onPressed: () {},
-              child: const Text('Something else'),
-            ),
-          ],
-        )
+        const Text(
+          'You do not seem to be logged in.',
+          textAlign: TextAlign.center,
+        ),
+        const LogInDialog()
       ],
     );
   }
