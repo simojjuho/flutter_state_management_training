@@ -1,4 +1,5 @@
 import 'package:state_training/src/users/domain/enums/roles.dart';
+import 'package:state_training/src/users/utils/roles_utils.dart';
 
 class User {
   final int id;
@@ -22,7 +23,7 @@ class User {
         id: userData['id'],
         email: userData['email'],
         name: userData['name'],
-        role: userData['role'],
+        role: RolesUtils.parseRole(userData['role']),
         password: userData['password'],
         avatar: userData['avatar']);
   }

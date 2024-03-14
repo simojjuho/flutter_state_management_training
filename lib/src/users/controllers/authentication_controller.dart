@@ -17,7 +17,7 @@ class AuthenticationController {
   }
 
   Future<User> getProfile(String token) async {
-    final response = await dio.post('/profile',
+    final response = await dio.get('/auth/profile',
         options: Options(headers: {'Authorization': 'Bearer $token'}));
     final rawData = response.data;
     return User.parseUser(rawData);
