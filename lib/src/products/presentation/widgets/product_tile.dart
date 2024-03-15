@@ -5,15 +5,25 @@ import 'package:state_training/src/products/presentation/state/product_state.dar
 
 class ProductTile extends StatelessWidget {
   final Product product;
+  final bool isAdmin;
 
-  const ProductTile({required this.product, super.key});
+  const ProductTile({required this.product, required this.isAdmin, super.key});
 
   @override
   Widget build(BuildContext context) {
     var productState = context.watch<ProductState>();
-    return GridTile(
-      footer: Row(
+    Widget getTileButtons() {
+      var flex = Flex(
+        direction: Axis.horizontal,
         children: [
+          FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(Icons.shopping_cart),
+          )
+        ],
+      );
+      if (isAdmin) {
+        flex.children.addAll([
           FloatingActionButton(
             onPressed: () {},
             child: const Icon(Icons.edit),
@@ -21,12 +31,15 @@ class ProductTile extends StatelessWidget {
           FloatingActionButton(
             onPressed: () => productState.removeProduct(product.id),
             child: const Icon(Icons.remove),
-          ),
-          FloatingActionButton(
-            onPressed: () {},
-            child: const Icon(Icons.shopping_cart),
           )
-        ],
+        ]);
+      }
+      return flex;
+    }
+
+    return GridTile(
+      footer: Row(
+        children: [getTileButtons()],
       ),
       child: Text('${product.title}: ${product.id}'),
     );

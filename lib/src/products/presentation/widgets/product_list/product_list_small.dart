@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:state_training/src/products/domain/core_entities/product.dart';
 import 'package:state_training/src/products/presentation/widgets/product_tile.dart';
+
+import '../../../../users/presentation/state/user_state.dart';
 
 class ProductListSmall extends StatelessWidget {
   const ProductListSmall({
@@ -11,6 +14,7 @@ class ProductListSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isAdmin = context.watch<UserState>().isAdmin;
     return Expanded(
       child: GridView.count(
         padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
@@ -21,7 +25,10 @@ class ProductListSmall extends StatelessWidget {
         childAspectRatio: 2.5,
         children: visibleProducts
             .map(
-              (e) => ProductTile(product: e),
+              (e) => ProductTile(
+                product: e,
+                isAdmin: isAdmin,
+              ),
             )
             .toList(),
       ),

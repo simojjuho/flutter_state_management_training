@@ -5,6 +5,13 @@ class LoggedIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Welcome!');
+    return Column(
+      children: [
+        Text(
+          'Welcome!',
+          style: Theme.of(context).textTheme.headlineLarge,
+        )
+      ],
+    );
   }
 }
